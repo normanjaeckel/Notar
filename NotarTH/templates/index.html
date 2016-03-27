@@ -44,55 +44,24 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="">Notariatsverwalter Heybey</a>
-                    </li>
-                    <li>
-                        <a href="">Mitarbeiter</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Fachgebiete<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="">Unterpunkt</a>
+                    {% for flatpage in flatpages %}
+                        {% if flatpage.children.exists %}
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ flatpage.title }}<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    {% for child in flatpage.children.all %}
+                                        <li>
+                                            <a href="{{ child.get_absolute_url }}">{{ child.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </li>
+                        {% else %}
                             <li>
-                                <a href="">Unterpunkt</a>
+                                <a href="{{ flatpage.get_absolute_url }}">{{ flatpage.title }}</a>
                             </li>
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">Kosten</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Service<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                            <li>
-                                <a href="">Unterpunkt</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="">Kontakt</a>
-                    </li>
-                    <li>
-                        <a href="">Impressum</a>
-                    </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -268,7 +237,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Notariatsverwalter Torsten Heybey 2016</p>
+                    <p>Copyright &copy; Notariatsverwalter Torsten Heybey 2016 · <a href="{% url 'admin:index' %}">Administration</a></p>
                 </div>
             </div>
         </footer>

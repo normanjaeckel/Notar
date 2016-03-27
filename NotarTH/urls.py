@@ -21,6 +21,14 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.Home.as_view(), name='home'),
+    url(r'^$',
+        views.Home.as_view(),
+        name='home'),
     url(r'^admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^(?P<slug>[-\w/]+)/$',
+        views.FlatPageView.as_view(),
+        name='flatpage'),
+]
+
+# This line does only work during development (settings.DEBUG == True)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

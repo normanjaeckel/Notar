@@ -25,6 +25,7 @@ class FlatPage(models.Model):
 
     parent = models.ForeignKey(
         'self',
+        related_name='children',
         verbose_name=ugettext_lazy('Parent element'),
         null=True,
         blank=True,
