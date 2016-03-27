@@ -1,4 +1,26 @@
 {
   "name": "NotarTH",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6",
+    "font-awesome-bower": "^4.5.0",
+    "html5shiv": "^3.7.3",
+    "respond": "^1.4.2"
+  },
+  "overrides": {
+    "bootstrap": {
+      "dependencies": {},
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/css/bootstrap.css.map",
+        "dist/fonts/glyphicons-halflings-regular.eot",
+        "dist/fonts/glyphicons-halflings-regular.svg",
+        "dist/fonts/glyphicons-halflings-regular.ttf",
+        "dist/fonts/glyphicons-halflings-regular.woff",
+        "dist/fonts/glyphicons-halflings-regular.woff2",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
 }
