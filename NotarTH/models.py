@@ -23,6 +23,14 @@ class FlatPage(models.Model):
             "Example: 'Legal notice'. The title is used for the entry in the "
             "menu. Do not use long titles."))
 
+    subtitle = models.CharField(
+        ugettext_lazy('Subtitle'),
+        max_length=255,
+        blank=True,
+        help_text=ugettext_lazy(
+            "Example: 'The legal details of our business.'. The subtitle is "
+            "used as subheading at the top of the page."))
+
     parent = models.ForeignKey(
         'self',
         related_name='children',

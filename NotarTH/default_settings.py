@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'constance',
+    'constance.backends.database',
     'NotarTH',
 ]
 
@@ -63,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'constance.context_processors.config',
                 'NotarTH.context_processors.flatpages',
             ],
         },
@@ -136,3 +139,18 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+
+
+# Constance - Dynamic Django settings
+# http://django-constance.readthedocs.org/
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
+CONSTANCE_CONFIG = {
+    'SITE_AUTHOR': (
+        'Author',
+        "The value for the HTML meta tag 'author'. This is used by search engines."),
+    'SITE_DESCRIPTION': (
+        'Description',
+        "The value for the HTML meta tag 'description'. This is used by search engines."),
+}

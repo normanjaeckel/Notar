@@ -25,7 +25,7 @@ urlpatterns = [
         views.Home.as_view(),
         name='home'),
     url(r'^admin/', admin.site.urls),
-    url(r'^(?P<slug>[-\w/]+)/$',
+    url(r'^(?P<url>[-\w/]+)/$',
         views.FlatPageView.as_view(),
         name='flatpage'),
 ]
