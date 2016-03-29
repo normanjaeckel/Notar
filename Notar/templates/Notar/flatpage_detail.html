@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% extends 'base.html' %}
 
 {% block page_content %}
@@ -10,7 +12,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'home' %}">{% trans 'Home' %}</a>
                 </li>
                 {% for entry in breadcrumb_list %}
                     <li>

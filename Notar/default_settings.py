@@ -148,8 +148,12 @@ CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 CONSTANCE_CONFIG = {
     'SITE_AUTHOR': (
-        'Author',
-        "The value for the HTML meta tag 'author'. This is used by search engines."),
+        'John Doe',
+        "The value for the top bar brand, the copyright notice and the HTML "
+        "meta tag 'author'."),
+    'SITE_TITLE': (
+        'Title',
+        'The value for the title of the page shown on the browser tab.'),
     'SITE_DESCRIPTION': (
         'Description',
         "The value for the HTML meta tag 'description'. This is used by search engines."),
