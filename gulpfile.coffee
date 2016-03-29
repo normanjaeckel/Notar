@@ -22,7 +22,7 @@ staticDirectory = path.join outputDirectory, 'static'
 
 # Gulp default task
 
-gulp.task 'default', ['createsettings', 'css', 'js'], ->
+gulp.task 'default', ['createsettings', 'createwsgifile', 'css', 'js'], ->
 
 
 # Django settings file
@@ -37,6 +37,13 @@ gulp.task 'createsettings', ->
     .pipe template
         secretKey: secretKey
     .pipe rename 'settings.py'
+    .pipe gulp.dest outputDirectory
+
+gulp.task 'createwsgifile', ->
+    gulp.src path.join __dirname, 'Notar', 'default_wsgi.py'
+    .pipe template
+        outputDirectoryBaseName: path.basename outputDirectory
+    .pipe rename 'wsgi.py'
     .pipe gulp.dest outputDirectory
 
 
