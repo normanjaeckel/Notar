@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ config.SITE_DESCRIPTION }}">
     <meta name="author" content="{{ config.SITE_AUTHOR }}">
+    <meta name="description" content="{{ config.SITE_DESCRIPTION }}">
+    <meta name="keywords" content="{{ config.SITE_KEYWORDS }}">
 
     <title>{{ config.SITE_TITLE }}</title>
 
@@ -73,31 +74,25 @@
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+            {% for slide in carousel_slides %}
+                <li data-target="#myCarousel"
+                    data-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active"{% endif %}
+                >
+                </li>
+            {% endfor %}
         </ol>
 
-        <!-- Wrapper for slides -->
+        <!-- Wrapper for slides http://placehold.it/1900x1080&text=Slide -->
         <div class="carousel-inner">
-            <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+            {% for slide in carousel_slides %}
+                <div class="item{% if forloop.first %} active{% endif %}">
+                    <div class="fill" style="background-image:url('{{ slide.slide }}');"></div>
+                    <div class="carousel-caption">
+                        <h2>{{ slide.caption }}</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 2</h2>
-                </div>
-            </div>
-            <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 3</h2>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 
         <!-- Controls -->

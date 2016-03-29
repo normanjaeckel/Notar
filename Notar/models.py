@@ -115,3 +115,36 @@ class MediaFile(models.Model):
 
     def __str__(self):
         return self.mediafile.url
+
+
+class CarouselSlide(models.Model):
+    """
+    Model for the slides for the header carousel.
+    """
+    slide = models.ForeignKey(
+        MediaFile,
+        verbose_name=ugettext_lazy('File'),
+        help_text=ugettext_lazy(
+            'Use an 1900x1080 image (e. g. JPG or PNG) here.'))
+
+    weight = models.IntegerField(
+        ugettext_lazy('Weight'),
+        default=100,
+        help_text=ugettext_lazy(
+            'Use this for ordering. A higher number means that the slide '
+            'appears further right in the carousel.'))
+
+    caption = models.CharField(
+        ugettext_lazy('Caption'),
+        max_length=255,
+        blank=True,
+        help_text=ugettext_lazy(
+            "Example: 'Trust me'."))
+
+    class Meta:
+        ordering = ('weight',)
+        verbose_name = ugettext_lazy('Carousel slide')
+        verbose_name_plural = ugettext_lazy('Carousel slides')
+
+    def __str__(self):
+        return self.caption or str(self.slide)

@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'constance.context_processors.config',
                 'Notar.context_processors.flatpages',
+                'Notar.context_processors.carousel_slides',
             ],
         },
     },
@@ -156,5 +157,10 @@ CONSTANCE_CONFIG = {
         'The value for the title of the page shown on the browser tab.'),
     'SITE_DESCRIPTION': (
         'Description',
-        "The value for the HTML meta tag 'description'. This is used by search engines."),
+        "The value for the HTML meta tag 'description'. This is used by "
+        "search engines."),
+    'SITE_KEYWORDS': (
+        'Keyword1,Keyword2,Keyword3',
+        "The value for the HTML meta tag 'keywords'. This is used by search "
+        "engines."),
 }

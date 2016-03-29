@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy
 
-from .models import FlatPage, MediaFile
+from .models import CarouselSlide, FlatPage, MediaFile
 
 
 class FlatPageAdmin(admin.ModelAdmin):
@@ -36,10 +36,15 @@ class MediaFileAdmin(admin.ModelAdmin):
         return super().has_change_permission(request, obj)
 
 
+class CarouselSlideAdmin(admin.ModelAdmin):
+    list_display = ('slide', 'caption', 'weight',)
+
+
 site_instance = admin.site
 site_instance.site_title = ugettext_lazy('Notar Administration')
 site_instance.site_header = ugettext_lazy('Notar Administration')
 
 site_instance.register(FlatPage, FlatPageAdmin)
 site_instance.register(MediaFile, MediaFileAdmin)
+site_instance.register(CarouselSlide, CarouselSlideAdmin)
 site_instance.unregister(Group)
