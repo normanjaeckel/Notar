@@ -1,6 +1,6 @@
-=========
- NotarTH
-=========
+=======
+ Notar
+=======
 
 This project is still under development.
 

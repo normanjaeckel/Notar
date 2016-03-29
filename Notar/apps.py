@@ -3,9 +3,9 @@ from django.db.models.signals import pre_delete
 from django.utils.translation import ugettext_lazy
 
 
-class NotarTHAppConfig(AppConfig):
-    name = 'NotarTH'
-    verbose_name = ugettext_lazy('NotarTH')
+class NotarAppConfig(AppConfig):
+    name = 'Notar'
+    verbose_name = ugettext_lazy('Notar')
 
     def ready(self):
         """

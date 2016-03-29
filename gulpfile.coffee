@@ -33,7 +33,7 @@ gulp.task 'createsettings', ->
     for i in [1..50]
         randomnumber = Math.floor Math.random() * chars.length
         secretKey += chars[randomnumber]
-    gulp.src path.join __dirname, 'NotarTH', 'default_settings.py'
+    gulp.src path.join __dirname, 'Notar', 'default_settings.py'
     .pipe template
         secretKey: secretKey
     .pipe rename 'settings.py'
@@ -49,7 +49,7 @@ gulp.task 'css-custom', ->
 gulp.task 'css-libs', ->
     gulp.src mainBowerFiles
         filter: /\.css$/
-    .pipe concat 'notarth-libs.css'
+    .pipe concat 'notar-libs.css'
     .pipe gulpif productionMode, cleanCSS
         compatibility: 'ie8'
     .pipe gulp.dest path.join staticDirectory, 'css'
@@ -79,6 +79,6 @@ gulp.task 'js-libs', ->
         name isnt 'html5shiv.js' and name isnt 'respond.src.js'
     gulp.src mainBowerFiles
         filter: /\.js$/
-    .pipe gulpif isntSpecialFile, concat 'notarth-libs.js'
+    .pipe gulpif isntSpecialFile, concat 'notar-libs.js'
     .pipe gulpif productionMode, uglify()
     .pipe gulp.dest path.join staticDirectory, 'js'

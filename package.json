@@ -1,5 +1,5 @@
 {
-  "name": "NotarTH",
+  "name": "Notar",
   "private": true,
   "scripts": {
     "prepublish": "bower install && gulp"

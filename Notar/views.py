@@ -8,7 +8,7 @@ class Home(generic.TemplateView):
     """
     View for the start page, called home.
     """
-    template_name = 'NotarTH/index.html'
+    template_name = 'Notar/index.html'
 
 
 class FlatPageView(generic.DetailView):

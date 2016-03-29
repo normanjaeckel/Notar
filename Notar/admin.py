@@ -37,8 +37,8 @@ class MediaFileAdmin(admin.ModelAdmin):
 
 
 site_instance = admin.site
-site_instance.site_title = ugettext_lazy('NotarTH Administration')
-site_instance.site_header = ugettext_lazy('NotarTH Administration')
+site_instance.site_title = ugettext_lazy('Notar Administration')
+site_instance.site_header = ugettext_lazy('Notar Administration')
 
 site_instance.register(FlatPage, FlatPageAdmin)
 site_instance.register(MediaFile, MediaFileAdmin)
