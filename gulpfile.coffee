@@ -2,6 +2,7 @@ argv = require 'yargs'
     .argv
 cleanCSS = require 'gulp-cleancss'
 concat = require 'gulp-concat'
+fs = require 'fs'
 gulp = require 'gulp'
 gulpif = require 'gulp-if'
 mainBowerFiles = require 'main-bower-files'
@@ -19,13 +20,17 @@ outputDirectory = path.join __dirname, 'NotarDeploy'
 
 staticDirectory = path.join outputDirectory, 'static'
 
+mediaDirectory = path.join outputDirectory, 'media'
+
 
 # Gulp default task
 
-gulp.task 'default', ['createsettings', 'createwsgifile', 'css', 'js'], ->
+gulp.task 'default', ['django', 'css', 'js'], ->
 
 
-# Django settings file
+# Django settings and wsgi file and media directory
+
+gulp.task 'django', ['createsettings', 'createwsgifile', 'createmediadirectory'], ->
 
 gulp.task 'createsettings', ->
     secretKey = ''
@@ -47,6 +52,15 @@ gulp.task 'createwsgifile', ->
         outputDirectoryBaseName: path.basename outputDirectory
     .pipe rename 'wsgi.py'
     .pipe gulp.dest outputDirectory
+
+gulp.task 'createmediadirectory', ['createsettings'], (callback) ->
+    fs.mkdir mediaDirectory, (error) ->
+        if error? and error.code is 'EEXIST'
+            callback()
+        else
+            callback error
+        return
+    return
 
 
 # CSS and font files
