@@ -22,7 +22,7 @@ from django.utils.translation import ugettext_lazy as _
 SECRET_KEY = '<%= secretKey %>'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Notar.wsgi.application'
+WSGI_APPLICATION = '<%= outputDirectoryBaseName %>.wsgi.application'
 
 
 # Database
@@ -85,6 +85,17 @@ DATABASES = {
         'NAME': os.path.join(os.path.dirname(__file__), 'db.sqlite3')
     }
 }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'Notar',
+#        'USER': 'Notar',
+#        'PASSWORD': '...',
+#        'HOST': 'localhost',
+#        'PORT': '5432'
+#    }
+# }
 
 
 # Password validation
@@ -115,7 +126,7 @@ LANGUAGES = [
 
 LANGUAGE_CODE = 'de-DE'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -129,9 +140,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(__file__), 'static')
-]
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(os.path.dirname(__file__), 'static')]
+else:
+    STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static')
 
 
 # User uploaded files

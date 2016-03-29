@@ -15,7 +15,7 @@ uglify = require 'gulp-uglify'
 
 productionMode = argv.production
 
-outputDirectory = path.join __dirname, 'deploy'
+outputDirectory = path.join __dirname, 'NotarDeploy'
 
 staticDirectory = path.join outputDirectory, 'static'
 
@@ -35,6 +35,7 @@ gulp.task 'createsettings', ->
         secretKey += chars[randomnumber]
     gulp.src path.join __dirname, 'Notar', 'default_settings.py'
     .pipe template
+        outputDirectoryBaseName: path.basename outputDirectory
         secretKey: secretKey
     .pipe rename 'settings.py'
     .pipe gulp.dest outputDirectory
@@ -42,6 +43,7 @@ gulp.task 'createsettings', ->
 gulp.task 'createwsgifile', ->
     gulp.src path.join __dirname, 'Notar', 'default_wsgi.py'
     .pipe template
+        outputDirectory: outputDirectory
         outputDirectoryBaseName: path.basename outputDirectory
     .pipe rename 'wsgi.py'
     .pipe gulp.dest outputDirectory

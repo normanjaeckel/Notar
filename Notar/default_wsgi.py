@@ -13,7 +13,7 @@ import os
 #
 # import site
 #
-# BASE_DIR = '/path/to/base_dir'
+# BASE_DIR = '<%= outputDirectory %>'
 # site.addsitedir(BASE_DIR)
 # site.addsitedir(os.path.join(
 #     BASE_DIR, '.virtualenv', 'lib', 'python3.4', 'site-packages'))
