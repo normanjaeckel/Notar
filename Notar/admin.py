@@ -8,6 +8,11 @@ from .models import CarouselSlide, FlatPage, MediaFile
 class FlatPageAdmin(admin.ModelAdmin):
     list_display = ('title', 'parent', 'weight',)
 
+    class Media:
+        css = {
+            'all': ('css/admin.css',)
+        }
+
     def get_changeform_initial_data(self, request):
         return {'content': '<div class="row">\n<div class="col-xs-12">'
                            '\n\n</div>\n</div>'}
