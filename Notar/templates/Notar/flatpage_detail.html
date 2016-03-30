@@ -27,3 +27,10 @@
     {{ flatpage.content|safe }}
 
 {% endblock %}
+
+{% block footer_links %}
+    {{ block.super }}
+    {% if user.is_staff %}
+        <li><a href="{% url 'admin:Notar_flatpage_change' flatpage.pk %}">{% trans 'Edit this page' %}</a</li>
+    {% endif %}
+{% endblock %}

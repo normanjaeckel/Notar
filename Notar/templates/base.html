@@ -116,7 +116,12 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; {{ config.SITE_AUTHOR }} 2016 · <a href="{% url 'admin:index' %}">{% trans 'Administration panel' %}</a></p>
+                    Copyright &copy; {{ config.SITE_AUTHOR }} 2016
+                    <ul class="list-inline pull-right">
+                        {% block footer_links %}
+                            <li><a href="{% url 'admin:index' %}">{% trans 'Administration' %}</a></li>
+                        {% endblock %}
+                    </ul>
                 </div>
             </div>
         </footer>
