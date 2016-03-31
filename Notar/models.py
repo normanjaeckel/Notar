@@ -23,6 +23,15 @@ class FlatPage(models.Model):
             "Example: 'Legal notice'. The title is used for the entry in the "
             "menu. Do not use long titles."))
 
+    submenu_title = models.CharField(
+        ugettext_lazy('Submenu title'),
+        max_length=255,
+        blank=True,
+        help_text=ugettext_lazy(
+            "Example: 'All services'. The submenu title is used for the entry "
+            "in the submenu and only if the page has children. Do not use "
+            "long titles."))
+
     subtitle = models.CharField(
         ugettext_lazy('Subtitle'),
         max_length=255,
@@ -94,6 +103,14 @@ class FlatPage(models.Model):
                     'Error: Do not create a circular hierarchy. Choose '
                     'another parent element.'))
             ancestor = ancestor.parent
+
+    def get_submenu_title(self):
+        """
+        Returns the value of the field submenu_title if it is set, else a
+        default string 'All <title>'.
+        """
+        return self.submenu_title or _('All {flatpage_title}').format(
+            flatpage_title=self.title)
 
 
 class MediaFile(models.Model):

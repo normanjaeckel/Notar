@@ -50,6 +50,9 @@
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ flatpage.title }}<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{ flatpage.get_absolute_url }}">{{ flatpage.get_submenu_title }}</a>
+                                        </li>
                                     {% for child in flatpage.children.all %}
                                         <li>
                                             <a href="{{ child.get_absolute_url }}">{{ child.title }}</a>
