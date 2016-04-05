@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import textwrap
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -157,6 +158,106 @@ MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
 # Constance - Dynamic Django settings
 # http://django-constance.readthedocs.org/
 
+DEFAULT_HOME_CONTENT = textwrap.dedent(
+    """
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Welcome to my website
+            </h1>
+        </div>
+        <div class="col-md-6">
+            <p>Welcome to the website of John Doe.</p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Corporis, omnis doloremque non cum id reprehenderit,
+                quisquam totam aspernatur tempora minima unde aliquid ea
+                culpa sunt. Reiciendis quia dolorum ducimus unde.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+        </div>
+    </div><!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+                Top News
+            </h2>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-fw fa-star"></i> Top News One</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Itaque, optio corporis quae nulla aspernatur in
+                        alias at numquam rerum ea excepturi expedita tenetur
+                        assumenda voluptatibus eveniet incidunt dicta nostrum
+                        quod?
+                    </p>
+                    <a href="#" class="btn btn-default">Get More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-fw fa-star"></i> Top News Two</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Itaque, optio corporis quae nulla aspernatur in
+                        alias at numquam rerum ea excepturi expedita tenetur
+                        assumenda voluptatibus eveniet incidunt dicta nostrum
+                        quod?
+                    </p>
+                    <a href="#" class="btn btn-default">Get More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-fw fa-star"></i> Top News Three</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Itaque, optio corporis quae nulla aspernatur in
+                        alias at numquam rerum ea excepturi expedita tenetur
+                        assumenda voluptatibus eveniet incidunt dicta nostrum
+                        quod?
+                    </p>
+                    <a href="#" class="btn btn-default">Get More</a>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <hr>
+
+    <div class="well">
+        <div class="row">
+            <div class="col-md-8">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Molestias, expedita, saepe, vero rerum deleniti
+                    beatae veniam harum neque nemo praesentium cum alias
+                    asperiores commodi.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-default btn-block" href="#">Get in touch</a>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.well -->
+    """)
+
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
 CONSTANCE_CONFIG = {
@@ -175,4 +276,7 @@ CONSTANCE_CONFIG = {
         'Keyword1,Keyword2,Keyword3',
         "The value for the HTML meta tag 'keywords'. This is used by search "
         "engines."),
+    'HOME_CONTENT': (
+        DEFAULT_HOME_CONTENT,
+        "The HTML content of the home page."),
 }

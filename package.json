@@ -1,9 +1,6 @@
 {
   "name": "Notar",
   "private": true,
-  "scripts": {
-    "prepublish": "bower install && gulp"
-  },
   "devDependencies": {
     "bower": "~1.7.7",
     "coffee-script": "~1.10.0",
