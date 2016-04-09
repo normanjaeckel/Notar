@@ -95,7 +95,7 @@ class FlatPage(models.Model):
         """
         Checks parent field to prevent hierarchical loops.
         """
-        super().clean()
+        super(FlatPage, self).clean()
         ancestor = self.parent
         while ancestor is not None:
             if ancestor == self:

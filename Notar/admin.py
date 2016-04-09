@@ -38,7 +38,7 @@ class MediaFileAdmin(admin.ModelAdmin):
         """
         if obj is not None:
             return False
-        return super().has_change_permission(request, obj)
+        return super(MediaFileAdmin, self).has_change_permission(request, obj)
 
 
 class CarouselSlideAdmin(admin.ModelAdmin):
