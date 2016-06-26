@@ -78,7 +78,7 @@ class FlatPage(models.Model):
         verbose_name = ugettext_lazy('Static Page')
         verbose_name_plural = ugettext_lazy('Static Pages')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
@@ -130,7 +130,7 @@ class MediaFile(models.Model):
         verbose_name = ugettext_lazy('File')
         verbose_name_plural = ugettext_lazy('Files')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.mediafile.url
 
 
@@ -163,5 +163,5 @@ class CarouselSlide(models.Model):
         verbose_name = ugettext_lazy('Carousel slide')
         verbose_name_plural = ugettext_lazy('Carousel slides')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.caption or str(self.slide)
