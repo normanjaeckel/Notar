@@ -6,7 +6,7 @@ This project is still under development.
 
 ::
 
-    $ python3 -m venv .virtualenv
+    $ virtualenv .virtualenv --python=python2
     $ source .virtualenv/bin/activate
     $ pip install -U pip
     $ pip install -r requirements.txt

@@ -30,7 +30,7 @@ gulp.task 'default', ['django', 'css', 'js'], ->
 
 # Django settings and wsgi file and media directory
 
-gulp.task 'django', ['createsettings', 'createwsgifile', 'createmediadirectory'], ->
+gulp.task 'django', ['createsettings', 'createinit', 'createwsgifile', 'createmediadirectory'], ->
 
 gulp.task 'createsettings', ->
     secretKey = ''
@@ -44,6 +44,13 @@ gulp.task 'createsettings', ->
         secretKey: secretKey
     .pipe rename 'settings.py'
     .pipe gulp.dest outputDirectory
+
+gulp.task 'createinit', ['createsettings'], (callback) ->
+    initFile = path.join outputDirectory, '__init__.py'
+    fs.writeFile initFile, '', (error) ->
+        callback error
+        return
+    return
 
 gulp.task 'createwsgifile', ->
     gulp.src path.join __dirname, 'Notar', 'default_wsgi.py'

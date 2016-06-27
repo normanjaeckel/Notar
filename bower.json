@@ -1,8 +1,8 @@
 {
-  "name": "Notar",
+  "name": "notar",
   "private": true,
   "dependencies": {
-    "jquery": "^2.2.2",
+    "jquery": "^2.2.4",
     "bootstrap": "^3.3.6",
     "font-awesome-bower": "^4.5.0",
     "html5shiv": "^3.7.3",
