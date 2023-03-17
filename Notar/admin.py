@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy
 
 from .models import CarouselSlide, FlatPage, MediaFile
 
@@ -27,7 +27,7 @@ class MediaFileAdmin(admin.ModelAdmin):
         Returns the URL to the uploaded file.
         """
         return obj.mediafile.url
-    mediafile_url.short_description = ugettext_lazy('URL')
+    mediafile_url.short_description = gettext_lazy('URL')
 
     def has_change_permission(self, request, obj=None):
         """
@@ -46,8 +46,8 @@ class CarouselSlideAdmin(admin.ModelAdmin):
 
 
 site_instance = admin.site
-site_instance.site_title = ugettext_lazy('Notar Administration')
-site_instance.site_header = ugettext_lazy('Notar Administration')
+site_instance.site_title = gettext_lazy('Notar Administration')
+site_instance.site_header = gettext_lazy('Notar Administration')
 
 site_instance.register(FlatPage, FlatPageAdmin)
 site_instance.register(MediaFile, MediaFileAdmin)
