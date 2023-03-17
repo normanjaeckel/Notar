@@ -132,8 +132,7 @@ class MediaFile(models.Model):
         verbose_name = gettext_lazy('File')
         verbose_name_plural = gettext_lazy('Files')
 
-    def __unicode__(self):
-        # Rename this to __str__() in Python 3.
+    def __str__(self):
         return self.mediafile.url
 
 
@@ -167,6 +166,5 @@ class CarouselSlide(models.Model):
         verbose_name = gettext_lazy('Carousel slide')
         verbose_name_plural = gettext_lazy('Carousel slides')
 
-    def __unicode__(self):
-        # Rename this to __str__() in Python 3.
+    def __str__(self):
         return self.caption or str(self.slide)
